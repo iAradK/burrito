@@ -32,6 +32,7 @@ public interface Profesor extends Comparable<Profesor> {
     Profesor favorite(CasaDeBurrito c)
             throws UnratedFavoriteCasaDeBurritoException;
 
+
     /**
      * @return the profesor's favorite casas de burrito
      * */

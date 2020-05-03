@@ -134,6 +134,7 @@ public class ProfesorImpl implements  Profesor{
         return this.filterAndSortFavorites(comp, predicate);
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Profesor)) return false;

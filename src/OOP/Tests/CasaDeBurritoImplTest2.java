@@ -177,20 +177,20 @@ public class CasaDeBurritoImplTest2 {
 	
 	@Test
 	public void test6_toStringTest() throws Exception {
-//		r1 = new CasaDeBurritoImpl(111, "Burgers Of The Seven", 10, menu1);
-//		r2 = new CasaDeBurritoImpl(222, "Burger's Landing", 5, menu2);
-//		r3 = new CasaDeBurritoImpl(333, "Burger Garden", 60, menu3);
-//		r4 = new CasaDeBurritoImpl(444, "House Of Burgers And Fries", 12, menu1);
-//		r5 = new CasaDeBurritoImpl(555, "The Silent Burgers", 1000, menu1);
-//		r6 = new CasaDeBurritoImpl(666, "The Many Face Burger", 1000, menu1);
-//		r7 = new CasaDeBurritoImpl(666, "The Exiled Burgers", 1000, menu1);
+		r1 = new CasaDeBurritoImpl(111, "Burgers Of The Seven", 10, menu1);
+		r2 = new CasaDeBurritoImpl(222, "Burger's Landing", 5, menu2);
+		r3 = new CasaDeBurritoImpl(333, "Burger Garden", 60, menu3);
+		r4 = new CasaDeBurritoImpl(444, "House Of Burgers And Fries", 12, menu1);
+		r5 = new CasaDeBurritoImpl(555, "The Silent Burgers", 1000, menu1);
+		r6 = new CasaDeBurritoImpl(666, "The Many Face Burger", 1000, menu1);
+		r7 = new CasaDeBurritoImpl(666, "The Exiled Burgers", 1000, menu1);
 		
 		String r1String = "CasaDeBurrito: Burgers Of The Seven.\n" +
 				"Id: 111.\n" +
 				"Distance: 10.\n" +
 				"Menu: Ale, Dornish Fries, Extra Holy Burger, Holy Burger.";
-//		System.out.println(r1String);
-//		System.out.println(r1.toString());
+		System.out.println(r1String);
+		System.out.println(r1.toString());
 		assertEquals(r1String, r1.toString());
 		
 		String r2String = "CasaDeBurrito: Burger's Landing.\n" +
