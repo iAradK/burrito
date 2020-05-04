@@ -1,5 +1,5 @@
 package OOP.Solution;
-
+// safot
 import OOP.Provided.*;
 import com.sun.source.tree.CompoundAssignmentTree;
 
@@ -15,7 +15,7 @@ public class ProfesorImpl implements  Profesor{
     Set<Profesor> friends_ = new HashSet<Profesor>();
     Set<CasaDeBurrito> fav_resturantes_ = new HashSet<CasaDeBurrito>();
 
-    ProfesorImpl(int id, String name){
+    public ProfesorImpl(int id, String name){
         id_ = id;
         name_ = name;
     }
@@ -72,11 +72,17 @@ public class ProfesorImpl implements  Profesor{
     @Override
     public Collection<CasaDeBurrito> filterAndSortFavorites(Comparator<CasaDeBurrito> comp, Predicate<CasaDeBurrito> p) {
         SortedSet<CasaDeBurrito> out = new TreeSet<CasaDeBurrito>(comp);
-
-        for(CasaDeBurrito cur : fav_resturantes_){
+        Iterator<CasaDeBurrito> iter = fav_resturantes_.iterator();
+        while(iter.hasNext()){
+            CasaDeBurrito cur = iter.next();
             if(p.test(cur)){
                 out.add(cur);
             }
+        }
+
+        for(CasaDeBurrito c : out){
+            System.out.println(c);
+            System.out.println(c.averageRating());
         }
         return out;
 
@@ -95,14 +101,13 @@ public class ProfesorImpl implements  Profesor{
             @Override
             public int compare(CasaDeBurrito o1, CasaDeBurrito o2) {
                 if (o1.averageRating() > o2.averageRating()) return -1;
-                if (o1.averageRating() < o2.averageRating()) return 1;
-                if(o1.distance() < o2.distance()) return -1;
-                if(o1.distance() > o2.distance()) return 1;
-                if(o1.getId() < o2.getId()) return -1;
-                if(o1.getId() >o2.getId()) return 1;
-                return 0;
+                else if (o1.averageRating() < o2.averageRating()) return 1;
+                else if(o1.distance() < o2.distance()) return -1;
+                else if(o1.distance() > o2.distance()) return 1;
+                else return Integer.compare(o1.getId(), o2.getId());
             }
         };
+
 
         return this.filterAndSortFavorites(comp, predicate);
     }
@@ -120,16 +125,15 @@ public class ProfesorImpl implements  Profesor{
             @Override
             public int compare(CasaDeBurrito o1, CasaDeBurrito o2) {
                 if(o1.distance() < o2.distance()) return -1;
-                if(o1.distance() > o2.distance()) return 1;
-                if (o1.averageRating() > o2.averageRating()) return -1;
-                if (o1.averageRating() < o2.averageRating()) return 1;
-                if(o1.getId() < o2.getId()) return -1;
-                if(o1.getId() >o2.getId()) return 1;
-                return 0;
+                else if(o1.distance() > o2.distance()) return 1;
+                else if (o1.averageRating() > o2.averageRating()) return -1;
+                else if (o1.averageRating() < o2.averageRating()) return 1;
+                else return Integer.compare(o1.getId(), o2.getId());
             }
         };
         return this.filterAndSortFavorites(comp, predicate);
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -156,11 +160,18 @@ public class ProfesorImpl implements  Profesor{
         Collection<CasaDeBurrito> casas = filterAndSortFavorites(comp, predicate);
         String out = new String();
         out += "Profesor: " + name_ + ".\n";
-        out += "Id: " + id_ + ".";
+        out += "Id: " + id_ + ".\n";
+        out += "Favorites: ";
+        int i =0;
         for(CasaDeBurrito casa : casas){
-            out += "\n" + casa.getName() + ".";
+            if(i > 0){
+                out += ", ";
+            }
+            out += casa.getName();
+            i++;
         }
 
+        out += ".";
         return out;
 
     }

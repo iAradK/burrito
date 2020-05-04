@@ -6,17 +6,16 @@ import OOP.Provided.CartelDeNachos.ImpossibleConnectionException;
 import OOP.Provided.Profesor;
 import OOP.Provided.Profesor.*;
 import OOP.Provided.CasaDeBurrito.*;
-//import OOP.Solution.CartelDeNachosImpl;
+import OOP.Solution.CartelDeNachosImpl;
 import org.junit.Test;
-
 import java.util.*;
-import java.util.function.Predicate;
-
+import java.util.function.*;
 import static org.junit.Assert.*;
 
 
+
 public class Example {
-   /* @Test
+    @Test
     public void ExampleTest() {
         CartelDeNachos network = new CartelDeNachosImpl();
         Profesor s1 = null, s2 = null;
@@ -103,5 +102,5 @@ public class Example {
             fail();
         }
     }
-*/
+
 }

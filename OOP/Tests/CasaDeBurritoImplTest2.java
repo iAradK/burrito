@@ -2,8 +2,8 @@ package OOP.Tests;
 
 import OOP.Provided.Profesor;
 import OOP.Provided.CasaDeBurrito;
-//import OOP.Provided.CasaDeBurrito.RateRangeException;
-//import OOP.Solution.ProfesorImpl;
+import OOP.Provided.CasaDeBurrito.RateRangeException;
+import OOP.Solution.ProfesorImpl;
 import OOP.Solution.CasaDeBurritoImpl;
 
 import OOP.Solution.CasaDeBurritoImpl;
@@ -53,10 +53,10 @@ public class CasaDeBurritoImplTest2 {
 		r7 = new CasaDeBurritoImpl(666, "The Exiled Burgers", 1000, menu1); //  r7 equals to r6 because id's
 		
 		
-		// s1 = new ProfesorImpl(11, "Jon");
-		// s2 = new ProfesorImpl(22, "Tyrion");
-		// s3 = new ProfesorImpl(33, "Daenerys");
-		// s4 = new ProfesorImpl(44, "Lyanna");
+		s1 = new ProfesorImpl(11, "Jon");
+		s2 = new ProfesorImpl(22, "Tyrion");
+		s3 = new ProfesorImpl(33, "Daenerys");
+		s4 = new ProfesorImpl(44, "Lyanna");
 	}
 	
 	@Test
@@ -69,7 +69,7 @@ public class CasaDeBurritoImplTest2 {
 		System.out.println("test1_distanceTest - V");
 	}
 
-	/*	@Test
+		@Test
         public void test2_rateTest() throws RateRangeException {
             try {
                 r1.rate(s1, -1);
@@ -105,8 +105,8 @@ public class CasaDeBurritoImplTest2 {
 
             System.out.println("test2_rateTest - V");
         }
-    */
-/*	@Test
+
+	@Test
 	public void test3_numberOfRatesTest() throws RateRangeException {
 		try {
 			assertEquals(0, r5.numberOfRates());
@@ -126,8 +126,8 @@ public class CasaDeBurritoImplTest2 {
 		
 		System.out.println("test3_numberOfRatesTest - V");
 	}
-*/
-/*	@Test
+
+	@Test
 	public void test4_averageRatingTest() throws RateRangeException {
 		try {
 			assertEquals(0.0, r5.averageRating(), DELTA);
@@ -147,7 +147,7 @@ public class CasaDeBurritoImplTest2 {
 		
 		System.out.println("test4_averageRatingTest - V");
 	}
-*/
+
 	@Test
 	public void test5_equalsTest() {
 		
@@ -178,20 +178,20 @@ public class CasaDeBurritoImplTest2 {
 	
 	@Test
 	public void test6_toStringTest() throws Exception {
-//		r1 = new CasaDeBurritoImpl(111, "Burgers Of The Seven", 10, menu1);
-//		r2 = new CasaDeBurritoImpl(222, "Burger's Landing", 5, menu2);
-//		r3 = new CasaDeBurritoImpl(333, "Burger Garden", 60, menu3);
-//		r4 = new CasaDeBurritoImpl(444, "House Of Burgers And Fries", 12, menu1);
-//		r5 = new CasaDeBurritoImpl(555, "The Silent Burgers", 1000, menu1);
-//		r6 = new CasaDeBurritoImpl(666, "The Many Face Burger", 1000, menu1);
-//		r7 = new CasaDeBurritoImpl(666, "The Exiled Burgers", 1000, menu1);
+		r1 = new CasaDeBurritoImpl(111, "Burgers Of The Seven", 10, menu1);
+		r2 = new CasaDeBurritoImpl(222, "Burger's Landing", 5, menu2);
+		r3 = new CasaDeBurritoImpl(333, "Burger Garden", 60, menu3);
+		r4 = new CasaDeBurritoImpl(444, "House Of Burgers And Fries", 12, menu1);
+		r5 = new CasaDeBurritoImpl(555, "The Silent Burgers", 1000, menu1);
+		r6 = new CasaDeBurritoImpl(666, "The Many Face Burger", 1000, menu1);
+		r7 = new CasaDeBurritoImpl(666, "The Exiled Burgers", 1000, menu1);
 		
 		String r1String = "CasaDeBurrito: Burgers Of The Seven.\n" +
 				"Id: 111.\n" +
 				"Distance: 10.\n" +
 				"Menu: Ale, Dornish Fries, Extra Holy Burger, Holy Burger.";
-//		System.out.println(r1String);
-//		System.out.println(r1.toString());
+		System.out.println(r1String);
+		System.out.println(r1.toString());
 		assertEquals(r1String, r1.toString());
 		
 		String r2String = "CasaDeBurrito: Burger's Landing.\n" +

@@ -73,7 +73,7 @@ public class CasaDeBurritoImpl implements CasaDeBurrito {
     public double averageRating() {
         if (numberOfRates() == 0) return 0;
         int sum = prof_list.values().stream().reduce(0, Integer::sum);
-        return (sum/numberOfRates());
+        return (1.0*sum/numberOfRates());
     }
 
     /**
