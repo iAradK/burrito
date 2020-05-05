@@ -184,18 +184,48 @@ public class CartelDeNachosImpl implements CartelDeNachos {
         if (this._profesors.contains(p) == false) throw new Profesor.ProfesorNotInSystemException();
         if (this._casas.contains(c) == false) throw new CasaDeBurrito.CasaDeBurritoNotInSystemException();
         if (t < 0) throw new ImpossibleConnectionException();
-        Set<Profesor> visited = new TreeSet<>();
-        return aux_getRecommendation(p, c, t, visited);
+        List<pairOf_Prof_t> visited = new LinkedList<>();
+        return aux_getRecommendation(p, c, t, 0 ,visited);
     }
 
-    private boolean aux_getRecommendation(Profesor p, CasaDeBurrito c, int t, Set<Profesor> visited) {
+    private class pairOf_Prof_t { // Cause we cant the pair lib
+        int so_far;
+        Profesor p;
+        pairOf_Prof_t(int _t, Profesor _p) {
+            so_far = _t;
+            p = _p;
+        }
+
+        int GetT() {
+            return so_far;
+        }
+
+        Profesor GetProfesor() {
+            return p;
+        }
+    }
+
+    private boolean SetContainsPair(List<pairOf_Prof_t> visited, pairOf_Prof_t pair) {
+        for (pairOf_Prof_t p : visited) {
+            int a = p.GetT();
+            int c = pair.GetT();
+            boolean b = p.GetT() <= pair.GetT();
+            if (p.GetProfesor() == pair.GetProfesor() &&
+                        p.so_far <= pair.so_far) return true;
+        }
+        return false;
+    }
+
+    private boolean aux_getRecommendation(Profesor p, CasaDeBurrito c, int t, int so_far,
+                                          List<pairOf_Prof_t> visited) {
         boolean b = p.favorites().contains(c);
         if (p.favorites().contains(c)) return true;
         if (t == 0) return false; // Cause it is not in p
         for (Profesor friend : p.getFriends()) {
-            if (visited.contains(friend) == false) { // Haven't visited friend yet
-                visited.add(friend);
-                if (aux_getRecommendation(friend, c, t-1, visited)) return true;
+            pairOf_Prof_t pair = new pairOf_Prof_t(so_far, friend);
+            if (SetContainsPair(visited, pair) == false) { // Haven't checked yet
+                visited.add(pair);
+                if (aux_getRecommendation(friend, c, t-1, so_far+1, visited)) return true;
             }
         }
         return false;
