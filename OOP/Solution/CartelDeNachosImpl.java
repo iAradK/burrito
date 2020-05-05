@@ -189,10 +189,11 @@ public class CartelDeNachosImpl implements CartelDeNachos {
     }
 
     private boolean aux_getRecommendation(Profesor p, CasaDeBurrito c, int t, Set<Profesor> visited) {
-        if (p.favorites().contains(p)) return true;
+        boolean b = p.favorites().contains(c);
+        if (p.favorites().contains(c)) return true;
         if (t == 0) return false; // Cause it is not in p
-        for (Profesor friend : _profesors) {
-            if(visited.contains(friend) == false) { // Haven't visited friend yet
+        for (Profesor friend : p.getFriends()) {
+            if (visited.contains(friend) == false) { // Haven't visited friend yet
                 visited.add(friend);
                 if (aux_getRecommendation(friend, c, t-1, visited)) return true;
             }
@@ -237,8 +238,6 @@ public class CartelDeNachosImpl implements CartelDeNachos {
         return ids;
     }
 
-
-
     /**
      * @return the cartel's description as a string in the following format:
      * <format>
@@ -267,7 +266,7 @@ public class CartelDeNachosImpl implements CartelDeNachos {
     public String toString() {
         StringBuilder out = new StringBuilder();
         SortedSet<CasaDeBurrito> casas = new TreeSet<>(compareCasasId);
-        out.append("Registered profesores:");
+        out.append("Registered profesores: ");
         int i = 0;
         for(Profesor p : _profesors){
             if(i > 0){
