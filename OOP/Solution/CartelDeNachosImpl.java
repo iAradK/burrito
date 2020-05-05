@@ -6,12 +6,14 @@ import OOP.Provided.CasaDeBurrito;
 import OOP.Provided.Profesor;
 
 import java.util.*;
+
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class CartelDeNachosImpl implements CartelDeNachos {
 
     private final SortedSet<Profesor> _profesors;
-    private final Set<CasaDeBurrito> _casas;
+    private Set<CasaDeBurrito> _casas;
 
     public CartelDeNachosImpl(){
         _profesors = new TreeSet<Profesor>(compareProfesors);
@@ -204,12 +206,9 @@ public class CartelDeNachosImpl implements CartelDeNachos {
             return p;
         }
     }
-
+    
     private boolean SetContainsPair(List<pairOf_Prof_t> visited, pairOf_Prof_t pair) {
         for (pairOf_Prof_t p : visited) {
-            int a = p.GetT();
-            int c = pair.GetT();
-            boolean b = p.GetT() <= pair.GetT();
             if (p.GetProfesor() == pair.GetProfesor() &&
                         p.so_far <= pair.so_far) return true;
         }
@@ -218,7 +217,6 @@ public class CartelDeNachosImpl implements CartelDeNachos {
 
     private boolean aux_getRecommendation(Profesor p, CasaDeBurrito c, int t, int so_far,
                                           List<pairOf_Prof_t> visited) {
-        boolean b = p.favorites().contains(c);
         if (p.favorites().contains(c)) return true;
         if (t == 0) return false; // Cause it is not in p
         for (Profesor friend : p.getFriends()) {
@@ -249,20 +247,40 @@ public class CartelDeNachosImpl implements CartelDeNachos {
         return score;
     }
 
-    @Override
-    public List<Integer> getMostPopularRestaurantsIds() {
-        Map<Integer, Integer> prof_list = new HashMap<Integer, Integer>();
-        for (CasaDeBurrito c : this._casas) {
-            int score = getScoreOfCasa(c);
-            prof_list.put(c.getId(), score);
+    private class pairOf_id_score { // Cause we cant the pair lib
+        int score;
+        Integer id;
+
+        pairOf_id_score(int _id, Integer _score) {
+            id = _id;
+            score = _score;
         }
 
-        List<Integer> ids = new LinkedList<Integer>();
-        prof_list.entrySet().stream()
-                .sorted(Map.Entry.<Integer, Integer>comparingByValue()); //reversed()?
+        public int compareTo(pairOf_id_score p) {
+            return this.score - p.score;
+        }
 
-        for (Integer i : prof_list.keySet()) {
-            ids.add(i);
+        public boolean equals(pairOf_id_score p) {
+            if (p == null) return false;
+            else return (this.id == p.id);
+        }
+    }
+
+    @Override
+    public List<Integer> getMostPopularRestaurantsIds() {
+        List<pairOf_id_score> score_list = new LinkedList<pairOf_id_score>();
+        for (CasaDeBurrito c : this._casas) {
+            int score = getScoreOfCasa(c);
+            pairOf_id_score pair = new pairOf_id_score(c.getId(), score);
+            score_list.add(pair);
+        }
+
+        score_list = score_list.stream().sorted().collect(Collectors.toList());
+
+        List<Integer> ids = new LinkedList<Integer>();
+
+        for (pairOf_id_score i : score_list) {
+            ids.add(i.id);
         }
 
         return ids;
@@ -295,7 +313,7 @@ public class CartelDeNachosImpl implements CartelDeNachos {
     @Override
     public String toString() {
         StringBuilder out = new StringBuilder();
-        SortedSet<CasaDeBurrito> casas = new TreeSet<>(compareCasasId);
+        // SortedSet<CasaDeBurrito> casas = new TreeSet<>(compareCasasId);
         out.append("Registered profesores: ");
         int i = 0;
         for(Profesor p : _profesors){
@@ -308,7 +326,10 @@ public class CartelDeNachosImpl implements CartelDeNachos {
         out.append(".\n");
         out.append("Registered casas de burrito: ");
         i = 0;
-        for(CasaDeBurrito c : casas){
+
+        SortedSet sortedSet = new TreeSet(_casas);
+        _casas = sortedSet; // Sort casas
+        for(CasaDeBurrito c : _casas){
             if(i > 0){
                 out.append(", ");
             }
