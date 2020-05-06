@@ -182,4 +182,7 @@ public class ProfesorImpl implements  Profesor{
         if(this.id_ > o.getId()) return 1;
         return 0;
     }
+
+    @Override
+    public int hashCode() { return this.id_*131; };
 }

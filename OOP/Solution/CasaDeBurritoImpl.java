@@ -118,7 +118,7 @@ public class CasaDeBurritoImpl implements CasaDeBurrito {
             first = false;
         }
 
-        ret += ".\n";
+        ret += ".";
         return ret;
     }
 
@@ -137,4 +137,7 @@ public class CasaDeBurritoImpl implements CasaDeBurrito {
         }
         return this._id == ((CasaDeBurrito)o).getId();
     }
+
+    @Override
+    public int hashCode() { return _id*37; };
 }
