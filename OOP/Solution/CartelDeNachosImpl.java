@@ -266,16 +266,19 @@ public class CartelDeNachosImpl implements CartelDeNachos {
         }
     }
 
+
     @Override
     public List<Integer> getMostPopularRestaurantsIds() {
-        List<pairOf_id_score> score_list = new LinkedList<pairOf_id_score>();
+        Set<pairOf_id_score> score_list = new HashSet<>();
         for (CasaDeBurrito c : this._casas) {
             int score = getScoreOfCasa(c);
             pairOf_id_score pair = new pairOf_id_score(c.getId(), score);
             score_list.add(pair);
         }
 
-        score_list = score_list.stream().sorted().collect(Collectors.toList());
+
+        SortedSet sortedSet = new TreeSet(score_list);
+        score_list = sortedSet;
 
         List<Integer> ids = new LinkedList<Integer>();
 
