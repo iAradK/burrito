@@ -45,7 +45,10 @@ public class CasaDeBurritoImpl implements CasaDeBurrito {
      * @param p - a profesor
      * */
     public boolean isRatedBy(Profesor p) {
-        return prof_list.containsKey(p);
+        for (Profesor pr : prof_list.keySet()) {
+            if (pr.getId() == p.getId()) return true;
+        }
+        return false;
     }
 
     /**
@@ -56,7 +59,14 @@ public class CasaDeBurritoImpl implements CasaDeBurrito {
      * */
     public CasaDeBurrito rate(Profesor p, int r) throws RateRangeException {
         if (r < 0 || r > 5) throw new RateRangeException();
-        prof_list.put(p, r);
+        boolean exists = false;
+        for (Profesor tmp : prof_list.keySet()) {
+            if (tmp.getId() == p.getId()) {
+                prof_list.put(tmp, r);
+                exists = true;
+            }
+        }
+        if (!exists) prof_list.put(p, r);
         return this;
     }
 
@@ -108,7 +118,7 @@ public class CasaDeBurritoImpl implements CasaDeBurrito {
             first = false;
         }
 
-        ret += ".";
+        ret += ".\n";
         return ret;
     }
 
@@ -118,8 +128,13 @@ public class CasaDeBurritoImpl implements CasaDeBurrito {
     }
 
     @Override
-    public boolean equals(CasaDeBurrito c) {
-        if (c == null) return false;
-        else return (c.getId() == _id);
+    public boolean equals(Object o){
+        if(o == null){
+            return false;
+        }
+        if(o.getClass() != this.getClass()){
+            return false;
+        }
+        return this._id == ((CasaDeBurrito)o).getId();
     }
 }

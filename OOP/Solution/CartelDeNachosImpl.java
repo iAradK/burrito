@@ -231,7 +231,9 @@ public class CartelDeNachosImpl implements CartelDeNachos {
 
     private int clacScoreByProfesor(Profesor p, CasaDeBurrito c) {
         int score = 0;
+        Set<Profesor> pp = p.getFriends();
         for (Profesor friend : p.getFriends()) {
+            Set<CasaDeBurrito> cc = (Set<CasaDeBurrito>) friend.favorites();
             if (friend.favorites().contains(c) == true) {
                 score++;
             }
@@ -269,22 +271,18 @@ public class CartelDeNachosImpl implements CartelDeNachos {
 
     @Override
     public List<Integer> getMostPopularRestaurantsIds() {
-        Set<pairOf_id_score> score_list = new HashSet<>();
+        Map<Integer, Integer> score_list = new HashMap();
+        List<Integer> ids = new LinkedList<Integer>();
         for (CasaDeBurrito c : this._casas) {
             int score = getScoreOfCasa(c);
-            pairOf_id_score pair = new pairOf_id_score(c.getId(), score);
-            score_list.add(pair);
+            //pairOf_id_score pair = new pairOf_id_score(c.getId(), score);
+            // score_list.add(pair);
+            score_list.put(c.getId(), score);
+            ids.add(c.getId());
         }
 
-
-        SortedSet sortedSet = new TreeSet(score_list);
-        score_list = sortedSet;
-
-        List<Integer> ids = new LinkedList<Integer>();
-
-        for (pairOf_id_score i : score_list) {
-            ids.add(i.id);
-        }
+        ids.sort((x,y) -> x -y);
+        ids.sort((x,y) -> score_list.get(x) - score_list.get(y));
 
         return ids;
     }
