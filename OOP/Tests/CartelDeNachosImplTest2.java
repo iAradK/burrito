@@ -303,7 +303,7 @@ public class CartelDeNachosImplTest2 {
 		
 		System.out.println("test7_addConnection - V");
 	}
-/*
+
 	@Test
 	public void test8_favoritesByRating() throws Exception {
 		registerBastards();
@@ -471,7 +471,7 @@ public class CartelDeNachosImplTest2 {
 		
 		System.out.println("test9_0_favoritesByDist - V");
 	}
-*/
+
 	@Test
 	public void test9_1_getRecommendation() throws Exception {
 		

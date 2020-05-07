@@ -265,14 +265,14 @@ public class ProfesorImplTest2 {
 	
 	@Test
 	public void test5_favoritesByRatingTest() throws RateRangeException , UnratedFavoriteCasaDeBurritoException {
-//		r1 = new CasaDeBurritoImpl(111, "Burgers Of The Seven", 10, menu1);
-//		r2 = new CasaDeBurritoImpl(222, "Burger's Landing", 5, menu2);
-//		r3 = new CasaDeBurritoImpl(333, "Burger Garden", 60, menu3);
-//		r4 = new CasaDeBurritoImpl(444, "House Of Burgers And Fries", 12, menu1);
-//		r5 = new CasaDeBurritoImpl(555, "The Silent Burgers", 1000, menu1); // won't be rated
-//		r6 = new CasaDeBurritoImpl(666, "The Many Face Burger", 1000, menu1); // r5 with different id
-//		r7 = new CasaDeBurritoImpl(666, "The Exiled Burgers", 1000, menu1); //  r7 equals to r6 because id's
-//		r8 = new CasaDeBurritoImpl(777, "BFC - Bravosi Fried Chicken", 1000, menu4);
+		r1 = new CasaDeBurritoImpl(111, "Burgers Of The Seven", 10, menu1);
+		r2 = new CasaDeBurritoImpl(222, "Burger's Landing", 5, menu2);
+		r3 = new CasaDeBurritoImpl(333, "Burger Garden", 60, menu3);
+		r4 = new CasaDeBurritoImpl(444, "House Of Burgers And Fries", 12, menu1);
+		r5 = new CasaDeBurritoImpl(555, "The Silent Burgers", 1000, menu1); // won't be rated
+		r6 = new CasaDeBurritoImpl(666, "The Many Face Burger", 1000, menu1); // r5 with different id
+		r7 = new CasaDeBurritoImpl(666, "The Exiled Burgers", 1000, menu1); //  r7 equals to r6 because id's
+		r8 = new CasaDeBurritoImpl(777, "BFC - Bravosi Fried Chicken", 1000, menu4);
 		
 		try {
 			r1.rate(s1, 5).rate(s6, 1); // avg = 3
@@ -431,12 +431,12 @@ public class ProfesorImplTest2 {
 	
 	@Test
 	public void test9_toStringTest() throws Exception {
-//		s1 = new ProfesorImpl(11, "Jon");
-//		s2 = new ProfesorImpl(22, "Tyrion");
-//		s3 = new ProfesorImpl(33, "Daenerys");
-//		s4 = new ProfesorImpl(44, "Lyanna");
-//		s5 = new ProfesorImpl(44, "Rhaegar");
-//		s6 = new ProfesorImpl(55, "The Hound");
+		s1 = new ProfesorImpl(11, "Jon");
+		s2 = new ProfesorImpl(22, "Tyrion");
+		s3 = new ProfesorImpl(33, "Daenerys");
+		s4 = new ProfesorImpl(44, "Lyanna");
+		s5 = new ProfesorImpl(44, "Rhaegar");
+		s6 = new ProfesorImpl(55, "The Hound");
 		
 		r1.rate(s1, 5).rate(s6, 1); // avg = 3
 		r2.rate(s1, 2).rate(s2, 3).rate(s6, 1); // avg = 2

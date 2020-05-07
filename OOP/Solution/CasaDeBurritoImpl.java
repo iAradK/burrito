@@ -123,6 +123,12 @@ public class CasaDeBurritoImpl implements CasaDeBurrito {
     }
 
     @Override
+    public boolean equals(CasaDeBurrito c) {
+        if(c == null) return false;
+        return this._id == c.getId();
+    }
+
+    @Override
     public int compareTo(CasaDeBurrito c) {
         return _id - c.getId();
     }

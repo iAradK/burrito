@@ -21,11 +21,11 @@ public class CartelDeNachosImpl implements CartelDeNachos {
 
     }
 
-    Comparator<Profesor> compareProfesors = new Comparator<Profesor>() {
+    final Comparator<Profesor> compareProfesors = new Comparator<Profesor>() {
         @Override
         public int compare(Profesor p1, Profesor p2) {
-            if(p1.getId() < p2.getId()) return -1;
-            else if(p1.getId() > p2.getId()) return 1;
+            if(p1.getId() < p2.getId())    return -1;
+            if(p1.getId() > p2.getId())    return 1;
             return 0;
         }
     };
@@ -152,6 +152,7 @@ public class CartelDeNachosImpl implements CartelDeNachos {
 
         for(Profesor friend: friends){
             SortedSet<CasaDeBurrito> casas = new TreeSet<>(comparCasasRating);
+            casas.addAll(friend.favorites());
             out.addAll(casas);
         }
         return out;
@@ -174,8 +175,10 @@ public class CartelDeNachosImpl implements CartelDeNachos {
         SortedSet <Profesor> friends = new TreeSet<>(compareProfesors);
         friends.addAll(p.getFriends());
 
+
         for(Profesor friend: friends){
             SortedSet<CasaDeBurrito> casas = new TreeSet<>(compareCasasDistance);
+            casas.addAll(friend.favorites());
             out.addAll(casas);
         }
         return out;

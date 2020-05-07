@@ -276,7 +276,7 @@ public class CartelDeNachosImplTest {
 
 
 
-/*    @Test
+    @Test
     public void favoritesByRating2() {
 
         CartelDeNachos cartel = new CartelDeNachosImpl();
@@ -291,7 +291,7 @@ public class CartelDeNachosImplTest {
 
 
         //CasaDeBurrito casa5 = new CasaDeBurritoImpl(5, "Casa5", 60, menu3);
-
+/*
         prof2 friends:
         prof1:
             casa1 (Italian) 4 (4)
@@ -306,7 +306,7 @@ public class CartelDeNachosImplTest {
             casa3
             casa4
             casa2
-
+*/
         try{
             CasaDeBurrito casa1 = cartel.addCasaDeBurrito(1, "Italian Casa", 60, menu1);
             CasaDeBurrito casa2 = cartel.addCasaDeBurrito(2, "American Casa", 30, menu2);
@@ -355,9 +355,7 @@ public class CartelDeNachosImplTest {
             fail();
         }
     }
-*/
 
-/*
     @Test
     public void favoritesByDist() {
 
@@ -378,7 +376,7 @@ public class CartelDeNachosImplTest {
 
 
         //CasaDeBurrito casa5 = new CasaDeBurritoImpl(5, "Casa5", 60, menu3);
-
+/*
         prof2 friends:
         prof1:
             casa1 (Italian) 60 -> 4 -> 1
@@ -393,7 +391,7 @@ public class CartelDeNachosImplTest {
             casa3
             casa2
             casa4
-
+*/
         try{
             CasaDeBurrito  casa1 =cartel.addCasaDeBurrito(1, "Italian Casa", 60, menu1);
             CasaDeBurrito  casa3 = cartel.addCasaDeBurrito(3, "Technion Student Casa", 60, menu3);
@@ -415,7 +413,7 @@ public class CartelDeNachosImplTest {
             prof3.favorite(casa4);
             cartel.addConnection(prof2,prof1);
             cartel.addConnection(prof2,prof3);
-            ArrayList<CasaDeBurrito> clist=new ArrayList<>();
+            Set<CasaDeBurrito> clist=new HashSet<>();
             clist.add(casa1);
             clist.add(casa3);
             clist.add(casa2);
@@ -443,7 +441,7 @@ public class CartelDeNachosImplTest {
             fail();
         }
     }
-*/
+
     @Test
     public void getRecommendation() throws Profesor.UnratedFavoriteCasaDeBurritoException, Profesor.ProfesorNotInSystemException, CasaDeBurrito.CasaDeBurritoNotInSystemException, CartelDeNachos.ImpossibleConnectionException, CasaDeBurrito.RateRangeException, Profesor.ConnectionAlreadyExistsException, Profesor.SameProfesorException, CasaDeBurrito.CasaDeBurritoAlreadyInSystemException {
         Profesor prof6 = new ProfesorImpl(6, "Not Exist");
