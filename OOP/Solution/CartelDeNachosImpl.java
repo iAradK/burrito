@@ -155,7 +155,8 @@ public class CartelDeNachosImpl implements CartelDeNachos {
             casas.addAll(friend.favorites());
             out.addAll(casas);
         }
-        return out;
+
+        return new ArrayList<CasaDeBurrito>(out);
     }
 
     @Override
@@ -181,7 +182,7 @@ public class CartelDeNachosImpl implements CartelDeNachos {
             casas.addAll(friend.favorites());
             out.addAll(casas);
         }
-        return out;
+        return  new ArrayList<CasaDeBurrito>(out);
     }
 
     @Override

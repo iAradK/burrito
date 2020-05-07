@@ -413,7 +413,7 @@ public class CartelDeNachosImplTest {
             prof3.favorite(casa4);
             cartel.addConnection(prof2,prof1);
             cartel.addConnection(prof2,prof3);
-            Set<CasaDeBurrito> clist=new HashSet<>();
+            ArrayList<CasaDeBurrito> clist=new ArrayList<>();
             clist.add(casa1);
             clist.add(casa3);
             clist.add(casa2);
