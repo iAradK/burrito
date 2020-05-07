@@ -45,7 +45,7 @@ public class CartelDeNachosImplTest {
         casa2 = new CasaDeBurritoImpl(2, "American Casa", 30, menu2);
         casa3 = new CasaDeBurritoImpl(3, "Technion Student Casa", 60, menu3);
 
-/*        assertEquals(cartel.joinCartel(1, "Charlie"), prof1);
+        assertEquals(cartel.joinCartel(1, "Charlie"), prof1);
         assertEquals(cartel.joinCartel(2, "Dee"), prof2);
         assertEquals(cartel.joinCartel(3, "Mac"), prof3);
         assertEquals(cartel.joinCartel(4, "Dennis"), prof4);
@@ -53,7 +53,7 @@ public class CartelDeNachosImplTest {
         assertEquals(cartel.addCasaDeBurrito(1, "Italian Casa", 40, menu1), casa1);
         assertEquals(cartel.addCasaDeBurrito(2, "American Casa", 30, menu2), casa2);
         assertEquals(cartel.addCasaDeBurrito(3, "Technion Student Casa", 60, menu3), casa3);
-*/
+
         cartel = new CartelDeNachosImpl();
         prof1 = cartel.joinCartel(1, "Charlie");
         prof2 = cartel.joinCartel(2, "Dee");
@@ -521,18 +521,18 @@ public class CartelDeNachosImplTest {
         /** example from the exercis **
          * the profesors joined the cartel already in the setup
          */
-        /*assertTrue(cartel.getMostPopularRestaurantsIds().size() == 3);
+        assertTrue(cartel.getMostPopularRestaurantsIds().size() == 3);
         Iterator<Integer> iter = cartel.getMostPopularRestaurantsIds().iterator();
         assertEquals(1, (int)iter.next() );
         assertEquals(2, (int)iter.next() );
-        assertEquals(3, (int)iter.next() );*/
+        assertEquals(3, (int)iter.next() );
 
         casa1.rate(prof1, 1);
         prof1.favorite(casa1);
         casa2.rate(prof1, 1);
         prof1.favorite(casa2);
         assertTrue(cartel.getMostPopularRestaurantsIds().size() == 3);
-        Iterator<Integer> iter = cartel.getMostPopularRestaurantsIds().iterator();
+        iter = cartel.getMostPopularRestaurantsIds().iterator();
         assertEquals(1, (int)iter.next() );
         assertEquals(2, (int)iter.next() );
         assertEquals(3, (int)iter.next() );

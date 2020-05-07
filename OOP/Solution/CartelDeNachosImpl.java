@@ -276,16 +276,19 @@ public class CartelDeNachosImpl implements CartelDeNachos {
     public List<Integer> getMostPopularRestaurantsIds() {
         Map<Integer, Integer> score_list = new HashMap();
         List<Integer> ids = new LinkedList<Integer>();
+        Integer max_score = 0;
         for (CasaDeBurrito c : this._casas) {
             int score = getScoreOfCasa(c);
-            //pairOf_id_score pair = new pairOf_id_score(c.getId(), score);
-            // score_list.add(pair);
             score_list.put(c.getId(), score);
             ids.add(c.getId());
+            if (score > max_score) max_score = score;
         }
 
         ids.sort((x,y) -> x -y);
         ids.sort((x,y) -> score_list.get(x) - score_list.get(y));
+
+        Integer finalMax_score = max_score;
+        ids.removeIf((x) -> (score_list.get(x) < finalMax_score));
 
         return ids;
     }

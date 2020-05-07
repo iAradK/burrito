@@ -34,7 +34,7 @@ public interface CartelDeNachos {
      * @param menu - the set of menu items of the casa de burrito
      * @return the CasaDeBurrito added
      * */
-    CasaDeBurrito addCasaDeBurrito(int id, String name, int dist, Set<String> menu)
+    OOP.Provided.CasaDeBurrito addCasaDeBurrito(int id, String name, int dist, Set<String> menu)
             throws CasaDeBurritoAlreadyInSystemException;
 
     /**
@@ -45,7 +45,7 @@ public interface CartelDeNachos {
     /**
      * @return a collection of all casas de burrito in the cartel
      * */
-    Collection<CasaDeBurrito> registeredCasasDeBurrito();
+    Collection<OOP.Provided.CasaDeBurrito> registeredCasasDeBurrito();
 
     /**
      * @return the profesor in the cartel by the id given
@@ -58,7 +58,7 @@ public interface CartelDeNachos {
      * @return the casa de burrito in the cartel by the id given
      * @param id - the id of the casa de burrito to look for in the cartel
      * */
-    CasaDeBurrito getCasaDeBurrito(int id)
+    OOP.Provided.CasaDeBurrito getCasaDeBurrito(int id)
             throws CasaDeBurritoNotInSystemException;
 
     /**
@@ -78,7 +78,7 @@ public interface CartelDeNachos {
      *
      * @param p - the profesor whom in relation to him, favored casas de burrito by his friends are considered
      * */
-    Collection<CasaDeBurrito> favoritesByRating(Profesor p)
+    Collection<OOP.Provided.CasaDeBurrito> favoritesByRating(Profesor p)
             throws ProfesorNotInSystemException;
 
     /**
@@ -87,7 +87,7 @@ public interface CartelDeNachos {
      *
      * @param p - the profesor whom in relation to him, favored casas de burrito by his friends are considered
      * */
-    Collection<CasaDeBurrito> favoritesByDist(Profesor p)
+    Collection<OOP.Provided.CasaDeBurrito> favoritesByDist(Profesor p)
             throws ProfesorNotInSystemException;
 
     /**
@@ -99,7 +99,7 @@ public interface CartelDeNachos {
      *
      * @return whether s t-recommends r
      * */
-    boolean getRecommendation(Profesor p, CasaDeBurrito c, int t)
+    boolean getRecommendation(Profesor p, OOP.Provided.CasaDeBurrito c, int t)
             throws ProfesorNotInSystemException, CasaDeBurritoNotInSystemException, ImpossibleConnectionException;
 
     /**
